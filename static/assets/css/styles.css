@@ -158,7 +158,13 @@ img{
     font-size: 1.5rem;
     cursor: pointer;
 }
-
+.nav__img{
+    position: relative;
+    display: flex;
+    left: 0;
+    top: 0;
+    width: 50px;
+}
 /*=== Show menu ===*/
 .show{
     right: 0;
@@ -400,7 +406,7 @@ img{
     }
 
     .nav{
-        height: calc(var(--header-height) + 1rem);
+        height: calc(var(--header-height) + 3rem);
     }
     .nav__list{
         display: flex;
@@ -420,6 +426,10 @@ img{
     }
     .active::after{
         background-color: var(--white-color);
+    }
+    .nav__img{
+        width: 100px;
+        height: 100px;
     }
 
     .home__container{

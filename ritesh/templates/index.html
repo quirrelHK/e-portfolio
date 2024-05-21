@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -11,18 +12,17 @@
         <!-- <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'> -->
         <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
-        <title>Ritesh Singh</title>
+        <title>Ritesh Singh's Portfolio</title>
     </head>
     <body>
         <!--===== HEADER =====-->
         <header class="l-header">
             <nav class="nav bd-grid">
                 <div>
-                    <a href="#" class="nav__logo">{{ home.name }}</a>
-                    <!-- <a href="#" class="nav__logo">
-                        <img src="static/assets/img/Logo-R-removebg-preview.png" 
-                        alt="" width="100px" height="100px">
-                    </a> -->
+                    <!-- <a href="#" class="nav__logo">{{ home.name }}</a> -->
+                    <a href="#" class="nav__img">
+                        <img src="static/assets/img/Logo-R-removebg-preview.png"  alt="">
+                    </a>
 
                 </div>
 
@@ -122,33 +122,33 @@
             </section>
 
             <!--===== CONTACT =====-->
-            <section class="contact section" id="contact">
-                <h2 class="section-title">Contact</h2>
+            {% block content %}
+                <section class="contact section" id="contact">
+                    <h2 class="section-title">Contact</h2>
 
-                <div class="contact__container bd-grid">
-                    <div class="contact__info">
-                        <h3 class="contact__subtitle">EMAIL</h3>
-                        <span class="contact__text">riteshsingh9827@gmail.com</span>
+                    <div class="contact__container bd-grid">
+                        <div class="contact__info">
+                            <h3 class="contact__subtitle">EMAIL</h3>
+                            <span class="contact__text">riteshsingh9827@gmail.com</span>
 
-                        <h3 class="contact__subtitle">PHONE</h3>
-                        <span class="contact__text">+91 95680-37394</span>
+                            <h3 class="contact__subtitle">PHONE</h3>
+                            <span class="contact__text">+91 95680-37394</span>
 
-                        <h3 class="contact__subtitle">ADRESS</h3>
-                        <span class="contact__text">Haldwani, Uttarakhand, India</span>
-                    </div>
-
-                    <form action="" class="contact__form">
-                        <div class="contact__inputs">
-                            <input type="text" placeholder="Name" class="contact__input">
-                            <input type="mail" placeholder="Email" class="contact__input">
+                            <h3 class="contact__subtitle">ADRESS</h3>
+                            <span class="contact__text">Haldwani, Uttarakhand, India</span>
                         </div>
-
-                        <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-
-                        <input type="submit" value="Enviar" class="contact__button">
-                    </form>
-                </div>
-            </section>
+                        <form action="" method="POST" class="contact__form">
+                            {% csrf_token %}
+                                <div class="contact__inputs">
+                                    <input type="text" name="name" placeholder="Name" class="contact__input" value="{{ form.name.value|default:'' }}">
+                                    <input type="email" name="email" placeholder="Email" class="contact__input" value="{{ form.email.value|default:'' }}">
+                                </div>
+                                <textarea name="message" id="message" cols="0" rows="10" placeholder="Message" class="contact__input">{{ form.message.value|default:'' }}</textarea>
+                            <input type="submit" value="Send" class="contact__button">
+                        </form>
+                    </div>
+                </section>
+            {% endblock content %}
         </main>
 
         <!--===== FOOTER =====-->
@@ -165,7 +165,7 @@
                         <li><a href="#home" class="footer__link">Home</a></li>
                         <li><a href="#about" class="footer__link">About</a></li>
                         <li><a href="#skills" class="footer__link">Skills</a></li>
-                        <li><a href="#portfolio" class="footer__link">Portfolio</a></li>
+                        <li><a href="#portfolio" class="footer__link">Projects</a></li>
                         <li><a href="#Contact" class="footer__link">Contact</a></li>
                     </ul>
                 </div>
