@@ -6,6 +6,7 @@ class Home(models.Model):
     greetings_1 = models.CharField(max_length=10)
     greetings_2 = models.CharField(max_length=10)
     picture = models.ImageField(upload_to="picture/")
+    resume = models.FileField(upload_to='resume/', null=True, default=None)
     # Save time when modified
     updated = models.DateTimeField(auto_now=True)
     

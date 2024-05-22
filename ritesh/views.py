@@ -9,9 +9,10 @@ def index(request):
         if form.is_valid():
             messages.success(request, "Form submitted")
             print(form.cleaned_data)
-            return redirect("index")
         else:
+            print("Not valid")
             messages.warning(request, "Invalid form submission")
+        return redirect("http://localhost:8000/#home")
     else:
         form = ContactForm()
     # Home
