@@ -12,7 +12,7 @@ def index(request):
         else:
             print("Not valid")
             messages.warning(request, "Invalid form submission")
-        return redirect("http://localhost:8000/#home")
+        return redirect("/")
     else:
         form = ContactForm()
     # Home
