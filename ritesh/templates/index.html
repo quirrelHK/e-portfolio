@@ -15,6 +15,7 @@
         <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet"> -->
 
         <title>Ritesh Singh's Portfolio</title>
+        <link rel="icon" type="image/x-icon" href="static/assets/img/favicon.ico">
     </head>
     <body>
         <!--===== HEADER =====-->
@@ -26,12 +27,15 @@
                         <img src="static/assets/img/Logo-R-removebg-preview.png"  alt="">
                     </a>
                 </div>
-                <!-- {% for message in messages %}
-                <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>{{ message }}</strong>
-                    <a href="http://localhost:8000/"><button type="button">Close</button></a>
-                </div>
-            {% endfor %} -->
+                {% for message in messages %}
+                    <div id="popup">
+                        <div class="popup__content">
+                            <p><strong>Hey!  </strong>{{ message }}</p>
+                            <button id="close-popup">&times;</button>
+                            <!-- <a href="http://localhost:8000/"><button type="button">Close</button></a> -->
+                        </div>
+                    </div>
+                {% endfor %}
 
 
                 <div class="nav__menu" id="nav-menu">
@@ -123,7 +127,7 @@
                         <div class="portfolio__img">
                             <img src="{{ project.image.url }}" alt="">
                             <div class="portfolio__link">
-                                <a href="{{ project.link }}" target="_blank" class="portfolio__link-name">View details</a>
+                                <a href="{{ project.link }}" target="_blank" class="portfolio__link-name">{{ project.name }}<br>View details</a>
                             </div>
                         </div>
                     {% endfor %}
@@ -152,7 +156,7 @@
                                     <input type="email" name="email" placeholder="Email" class="contact__input" value="{{ form.email.value|default:'' }}">
                                 </div>
                                 <textarea name="message" id="message" cols="0" rows="10" placeholder="Message" class="contact__input">{{ form.message.value|default:'' }}</textarea>
-                            <input type="submit" value="Send" class="contact__button">
+                            <input type="submit" value="Send" id="send-message" class="contact__button">
                         </form>
                     </div>
                 </section>
@@ -164,7 +168,7 @@
             <div class="footer__container bd-grid">
                 <div class="footer__data">
                     <h2 class="footer__title">Ritesh Singh</h2>
-                    <p class="footer__text">I'm Ritesh Singh and this is my portfolio</p>
+                    <p class="footer__text">I love machines that can learn.💖</p>
                 </div>
 
                 <div class="footer__data">
@@ -196,7 +200,21 @@
 
         <!--===== MAIN JS =====-->
         <script src="{% static 'assets/js/main.js' %}"></script>
+        
+        <!-- ===== POPUP SCRIPT ===== -->
+        <script>
+            var popup = document.getElementById("popup")
+            var openPopup = document.getElementById("send-message")
+            var closePopup = document.getElementById('close-popup')
 
+            openPopup.addEventListener('click', () => {
+                popup.style.display = "contents";
+            })
+
+            closePopup.addEventListener('click', () => {
+                popup.style.display = "none";
+            })
+        </script>
         <!-- ===== Bootstrap JS ===== -->
         <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script> -->
     </body>

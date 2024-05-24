@@ -80,6 +80,42 @@ img{
     display: block;
 }
 
+/* ===== POPUP ===== */
+#popup {
+	display: contents;
+	background-color: rgba(0,0,0,0.5);
+	position: relative;
+	height: 100vh;
+	width: 100%;
+}
+.popup__content{
+	position: absolute;
+	padding: 1.5rem;
+	margin: 4rem 0rem;
+	background-color: #ffebb1;
+	width: 58%;
+	top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#close-popup {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #333;
+    padding: 0;
+}
+
+#close-popup:hover {
+    color: #000;
+}
+
 /*===== CLASS CSS ===== */
 .section{
     padding: 3rem 0;
@@ -228,13 +264,13 @@ img{
     display: flex;
     justify-content: center;
     padding-top: -2rem;
-
     background-color: var(--first-color);
     border-radius: 100%;
     overflow: hidden;
 }
 .about__img img{
     width: 100px;
+    height: 100px;
     object-fit: cover;
 }
 .about__subtitle{
@@ -292,8 +328,10 @@ img{
     row-gap: 2rem;
 }
 .portfolio__img{
+    display: flex;
     position: relative;
     overflow: hidden;
+    /* height: 250px; */
 }
 .portfolio__img img{
     border-radius: .5rem;
@@ -316,6 +354,7 @@ img{
     bottom: 0;
 }
 .portfolio__link-name{
+    text-align: center;
     color: var(--dark-color);
 }
 
@@ -476,7 +515,8 @@ img{
         height: 200px;
     }
     .about__img img{
-        width: 300px;
+        width: 200px;
+        height: 200px;
     }
 
     .skills__container{
@@ -488,6 +528,7 @@ img{
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(2, 1fr);
         column-gap: 2rem;
+        row-gap: 2rem;
     }
 
     .contact__container{

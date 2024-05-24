@@ -11,9 +11,6 @@ class Home(models.Model):
     # Save time when modified
     updated = models.DateTimeField(auto_now=True)
     
-    def __str__(self) -> str:
-        return self.name
-    
     # Overriding the save method to resize the images
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -24,6 +21,9 @@ class Home(models.Model):
             output_size = (300,300)
             img.thumbnail(output_size)
             img.save(self.image.path)
+    def __str__(self) -> str:
+        return self.name
+    
     
 # About Section
 class About(models.Model):
@@ -64,6 +64,7 @@ class Skills(models.Model):
 class Project(models.Model):
     link = models.URLField(max_length=200)
     image = models.ImageField(upload_to='project/')
+    name = models.CharField(max_length=150)
     
     def __str__(self) -> str:
         return f"Project {self.id}"

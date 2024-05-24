@@ -78,3 +78,14 @@ sr.reveal('.contact__button', {delay: 250})
 
 
 
+// var popup = document.getElementById("popup")
+// var openPopup = document.getElementById("send-message")
+// var closePopup = document.getElementById('close-popup')
+
+// openPopup.addEventListener('click', () => {
+//     popup.style.display = "contents";
+// })
+
+// closePopup.addEventListener('click', () => {
+//     popup.style.display = "none";
+// })
