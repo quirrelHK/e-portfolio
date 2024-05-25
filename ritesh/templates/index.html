@@ -125,10 +125,15 @@
                 <div class="portfolio__container bd-grid">
                     {% for project in projects %}
                         <div class="portfolio__img">
-                            <img src="{{ project.image.url }}" alt="">
+                            <div class="portfolio__name">
+                                {{ project.name }}
+                            </div>
+                            <p class="portfolio__description">{{ project.description }}</p>
+                            <a class="portfolio__button" href="{{ project.link }}" target="_blank">Read More</a>
+                            <!-- <img src="{{ project.image.url }}" alt="">
                             <div class="portfolio__link">
                                 <a href="{{ project.link }}" target="_blank" class="portfolio__link-name">{{ project.name }}<br>View details</a>
-                            </div>
+                            </div> -->
                         </div>
                     {% endfor %}
                 </div>

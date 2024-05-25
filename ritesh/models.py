@@ -12,17 +12,17 @@ class Home(models.Model):
     updated = models.DateTimeField(auto_now=True)
     
     # Overriding the save method to resize the images
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
         
-        img = Image.open(self.picture.path)
+    #     img = Image.open(self.picture.path)
         
-        if img.height > 300 or img.width > 300:
-            output_size = (300,300)
-            img.thumbnail(output_size)
-            img.save(self.image.path)
-    def __str__(self) -> str:
-        return self.name
+    #     if img.height > 300 or img.width > 300:
+    #         output_size = (300,300)
+    #         img.thumbnail(output_size)
+    #         img.save(self.picture.path)
+    # def __str__(self) -> str:
+    #     return self.name
     
     
 # About Section
@@ -65,6 +65,7 @@ class Project(models.Model):
     link = models.URLField(max_length=200)
     image = models.ImageField(upload_to='project/')
     name = models.CharField(max_length=150)
+    description = models.TextField(blank=False)
     
     def __str__(self) -> str:
         return f"Project {self.id}"
